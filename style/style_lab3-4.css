@@ -1,0 +1,18 @@
+.box{
+           
+    width: 30px;
+    margin:0 auto;
+}
+.box-1{
+    border: 1px solid black;
+}
+.box-1:hover{
+    background-color: yellow;
+}
+.box-2{
+border: 1px solid black;
+}
+.box-2:hover{
+    
+    background-color: red;
+}
