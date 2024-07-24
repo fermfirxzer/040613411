@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form{
+            padding-left: 20px;
+            margin: 0 auto;
+        }
+        input,select,label{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <form action="/lab2/form-echo.php" method="get">
+            <label>ชื่อเต็ม/ย่อของสาขาวิชา :</label>
+            <input type="text" name="dp"><br>
+            <label>จำนวนเต็มที่จะโอน :</label>
+            <input type="number" name="money"><br><br>
+            <label>อาหาร 5 ชนิดที่ชื่นชอบจากมากไปน้อย :</label><br>
+            <input type="text" name="food1" placeholder="อาหารที่ชอบอันดับ 1"><br>
+            <input type="text" name="food2" placeholder="อาหารที่ชอบอันดับ 2"><br>
+            <input type="text" name="food3" placeholder="อาหารที่ชอบอันดับ 3"><br>
+            <input type="text" name="food4" placeholder="อาหารที่ชอบอันดับ 4"><br>
+            <input type="text" name="food5" placeholder="อาหารที่ชอบอันดับ 5"><br>
+            <!-- <input type="text"><br> -->
+            <label>ค่าไฟ 3 เดือนที่ผ่านมา :</label>
+            <input type="number" name="bill"><br>
+            <label>รหัสบัตรประชาชน :</label>
+            <input type="text" size="15" maxlength="13" name="thaiid"><br>
+            <label>ความพึงพอใจของหนังสือเล่มนี้ :</label>
+            <select name="book">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+
+            <label>อาการป่วย :</label>
+            <input type="text" name="sick"><br>
+            <label>ในช่วง 3 เดือนที่ผ่านมาเคยได้รับวัคซีนหรือไม่ :</label>
+            <input type="radio" name="vacine">เคย <input type="radio" name="vacine">ไม่เคย<br>
+            <label>รหัสผ่าน :</label>
+            <input type="password" name="password" required><br>
+            <label>เวลาเริ่มเข้าเรียนและสิ้นสุดการเรียน :</label>
+            <input type="time"name="time" required><br>
+            <label>วันที่ต้องไปพบแพทย์ :</label>
+            <input type="date" name="date"><br>
+            <input type="submit" value="ยืนยัน"></input>
+        </form>
+    </div>
+</body>
+</html>

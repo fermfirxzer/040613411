@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form Exercise</title>
+</head>
+    <style>
+        
+        form{
+            width: 400px;
+        }
+        .hidden{
+            display: none;
+        }
+        input:invalid {
+            border: red solid 4px;
+          }
+          input,
+          input:valid {
+            color:green;
+          }
+    </style>
+<body>
+    <div id="login-form">
+        <h2>เข้าสู่ระบบ</h2>
+        <form action="/lab2/form-logout.html" method="get">
+            <label >Username :</label>
+            <input type="username" name="username" required autofocus size="15"><br>
+            <label>Password :</label>
+            <input type="password" name="password"required size="15"><br>
+            <label>กรุณาพิมพ์ตามตัวเลขที่ปรากฏ :</label><br>
+            <label>1559</label><br>
+            <input type="text" name="comfirm" required pattern="(1559)" size="6"><br><br>
+            <button type="submit" value="login">
+                <img src="https://png.pngtree.com/png-clipart/20220913/ourmid/pngtree-login-button-png-image_6163957.png" width="75px" height="50px" alt="Submit">
+            </button>
+        </form>
+        
+    </div>
+    <div id="success-page" class="hidden">
+        <h2>...เข้าสู่ระบบแล้ว...</h2>
+        <button id="logout">Logout</button>
+    </div>
+    <!-- <script>
+        document.getElementById("form").addEventListener('submit',function(){
+            event.preventDefault();
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('success-page').classList.remove('hidden');
+        })
+        document.getElementById("logout").addEventListener('click',function(){
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('success-page').classList.add('hidden');
+            document.getElementById("form").reset();
+        })
+    </script> -->
+</body>
+</html>
