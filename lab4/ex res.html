@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/ff8e4e1955.js" crossorigin="anonymous"></script>
+	<style>
+		.menu {
+			background-color: black;
+			color: white;
+			text-align: center;
+			width: 30%;
+			font-family: Roboto;
+		}
+		.content {
+			background-color: gainsboro;
+			width: 60%;
+		}
+		.ads {
+			background-color: cornflowerblue;
+			width: 10%;
+		}
+		.flex { 
+			display: flex; 
+		}
+		@media (max-width : 600px) {
+			.flex { display: block; }
+			.menu { width: auto; }
+			.content { width: auto; }
+			.ads { width: auto; display: none;}
+		}
+	</style>
+</head>
+<body>
+	<div class="flex">
+		<div class="menu"><i class="fa-solid fa-mobile-button"></i>Menu1<br>Menu2<br>Menu3<br></div>
+		<div class="content"><i class="fa-solid fa-shield-halved"></i>In publishing, art, and communication, … as speech, writing or any of various arts".</div>
+		<div class="ads">advertising<br>advertising<br>advertising<br></div>
+	</div>
+</body>
+</html>
