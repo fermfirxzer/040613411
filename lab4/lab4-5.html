@@ -20,9 +20,10 @@
         }
 
         .wrap {
+            align-self: center;
             display: flex;
             justify-content: center;
-            align-self: center;
+            align-items: center;
             background-color: blue;
             color: white;
             border-radius: 7px;
@@ -31,19 +32,23 @@
         }
 
         .wrap a {
-            align-self: center;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
             font-size: 18px;
         }
 
         .botton {
-            text-align: center;
+            
         }
 
         .wrap a::before {
-
-            content: "<i class="fa-solid fa-cart-shopping"></i>"
+            
+            font-family: "Font Awesome 5 Free";
+            content: "\f07a"; /* Unicode for the shopping cart icon */
+            font-weight: 600;
+            
         }
 
         @media screen and (max-width: 600px) {
