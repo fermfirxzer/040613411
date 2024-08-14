@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+        let student = [
+            {
+                fullname: 'นายตั้งใจ เรียนมาก',
+                age: 18,
+                year: 1,
+                gpa: 3.40,
+                help: true
+            },
+            {
+                fullname: 'นายส่ง งาน ตลอดมา',
+                age: 19,
+                year: 2,
+                gpa: 3.00,
+                help: false
+            },
+            {
+                fullname: 'นางสาวใสใจ ดีงาม',
+                age: 20,
+                year: 3,
+                gpa: 2.90,
+                help: true
+            }
+        ]
+    let std_year=[];
+    let max_year=0;
+    student.forEach((item)=>{
+        let reson;
+        let {fullname,age,year,gpa,help}=item;
+        max_year=Math.max(max_year,year)
+        if (!Array.isArray(std_year[year - 1])) {
+            std_year[year - 1] = [];
+        }
+        if((year>=2&&help==true&&gpa>=2.75)|(gpa>=3.20&&help==true)){
+            
+            reson="เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย";
+            console.log(fullname+"เกิดเมื่อปี "+(2547-year)+" ได้รับทุนการศึกษา"+reson)
+            std_year[year-1].push({fullname:fullname,reson:reson})
+        }else if(gpa>=3.20&&help==false){
+            
+            reson="เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย";
+            console.log(fullname+"เกิดเมื่อปี "+(2547-year)+" ได้รับทุนการศึกษา"+reson)
+            std_year[year-1].push({fullname:fullname,reson:reson})
+        }else{
+            reson="เนื่องจากเกรดเฉลี่ยไม่ถึงเกณฑ์ และยังไม่ได้ช่วยงานภาควิชา";
+            console.log(fullname+"เกิดเมื่อปี "+(2547-year)+" ไม่ได้รับทุนการศึกษา"+reson)
+        }
+    })
+    for(let i=0;i<max_year;i++){
+        console.log("ชั้นปีที่ "+(i+1));
+        if(std_year[i].length!=0){
+            std_year[i].forEach((item)=>{
+                console.log(item.fullname+item.reson);
+            })
+        }
+        else{
+            console.log(" ")
+        }
+    }
+    console.log(std_year)
+    </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

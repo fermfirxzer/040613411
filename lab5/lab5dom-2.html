@@ -6,24 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        // function echo() {
-        //     console.log("1")
-        // }
-        // function change(name) {
-        //     console.log(name)
-        //     document.getElementById(name).value.style.color = "green";
-        // }
-        // window.onload=function(){
-        //     document.getElementById("name").onfocusout=echo
-        //     document.getElementById("age").onfocusout=change("age")
-        //     document.getElementById("date").onfocusout=change("date")
-        // }
+
+        
         window.onload = function () {
             var form=document.getElementById("form");
             form.addEventListener("focusout",(e)=>{
                 e.target.style.color="red";
             })
         }
+        
     </script>
 </head>
 
