@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function click(){
+            let text=document.getElementById("text").innerHTML;
+            match=text.match(/The/gi);
+            alert(`มี The ${match.length} ตัว`)
+        }
+        window.onload=function(){
+            document.getElementById("click").onclick=click
+        }
+    </script>
+</head>
+<body>
+    <p id="text">The eighth ruler of the Fifth Dynasty in the late 25th century.</p><br><br>
+    <a href="#" id="click">Click for count "the"</a>
+</body>
+</html>
