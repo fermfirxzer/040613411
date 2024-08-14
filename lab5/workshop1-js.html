@@ -9,7 +9,12 @@
         console.log("วันนี้ " + d.getDate()+"/"+d.getMonth()+"/"+parseInt((d.getFullYear())+543));
         console.log("เวลา " + d.getHours()+"."+d.getMinutes() +" น.")
         let ntime=d.toLocaleTimeString().split(":");
-        console.log("เวลา "+ntime[0]+" :"+ntime[1]);
+        console.log(ntime)
+        console.log("เวลา "+ntime[0]+":"+ntime[1]);
+        let p=function(a,b){
+            return a+b;
+        }
+        console.log(p(3,5))
         </script>
 
 </head>

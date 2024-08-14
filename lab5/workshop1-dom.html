@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        function show() {
+            document.getElementById("song1").innerHTML = "เรือเล็กควรออกจากฝั่ง - bodyslam";
+            document.getElementById("song2").innerHTML = "คำถามซึ่งไร้คนตอบ - Getsunova";
+            document.getElementById("song3").innerHTML = "โปรดเถิดรัก - Cocktail";
+        }
+        function dis(){
+            document.getElementById("song1").innerHTML=" ";
+            document.getElementById("song2").innerHTML=" ";
+            document.getElementById("song3").innerHTML=" ";
+        }
+        window.onload = function () {
+            document.getElementById("Top").onclick = show;
+            document.getElementById("Top").style.fontSize="48px";
+            document.getElementById("Top").onmouseout =dis;
+            document
+        }
+        function addsong(){
+            console.log(document.getElementById("new song").value);
+            let songname=document.getElementById("new song").value;
+            let li=document.createElement('li')
+            li.innerHTML=songname;
+            var ul=document.getElementById("newplaylist")
+            ul.appendChild(li)
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h1 id="Top">Top Chart</h1>
+    <ul id="playlist">
+        <li id="song1"></li>
+        <li id="song2"></li>
+        <li id="song3"></li>
+    </ul>
+    <input type="text" id="new song">
+    <button id="" onclick=addsong()>Add new song</button>
+    <ul id="newplaylist">
+
+    </ul>
+</body>
+
+</html>

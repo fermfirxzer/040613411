@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script>
+        function submit(){
+            
+            let name=document.getElementById("name").value
+            let address=document.getElementById("address").value
+            let phone=document.getElementById("phone").value
+            let tdname=document.createElement('td')
+            let tdaddress=document.createElement('td')
+            let tdphone=document.createElement('td')
+            console.log(name,address,phone)
+            tdname.innerHTML=name;
+            tdaddress.innerHTML=address;
+            tdphone.innerHTML=phone;
+            let tr=document.createElement('tr');
+            
+            tr.appendChild(tdname)
+            tr.appendChild(tdaddress)
+            tr.appendChild(tdphone)
+            
+            document.getElementById("tabel").appendChild(tr);
+        }
+        window.onload=function(){
+            document.getElementById('form').onsubmit=submit;
+           
+        }
+    </script>
+<body>
+    <form id="form">
+        <label>ชื่อลูกค้า :</label>
+        <input type="text" placeholder="ชื่อ" id="name"><br>
+        <label>ที่อยู่ :</label>
+        <input type="text" placeholder="ที่อยู่" id="address"><br>
+        <label>โทรศัพท์ :</label>
+        <input type="text" placeholder="โทรศัพท์" id="phone"><br>
+
+        <input type="submit" value="เพิ่ม"></button>
+    </form>
+    <table id="tabel">
+        <tr>
+            <th>ชื่อลูกค้า</th>
+            <th>ที่อยู่</th>
+            <th>โทรศัพท์</th>
+        </tr>
+        
+    </table>
+</body>
+</html>
