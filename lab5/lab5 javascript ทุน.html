@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let student = [
+            {
+                fullname: 'นายตั้งใจ เรียนมาก',
+                age: 18,
+                year: 1,
+                gpa: 3.40,
+                help: true
+            },
+            {
+                fullname: 'นายสง่ งาน ตลอดมา',
+                age: 19,
+                year: 2,
+                gpa: 3.00,
+                help: false
+            },
+            {
+                fullname: 'นางสาวใสใ่ จ ดงีาม',
+                age: 20,
+                year: 3,
+                gpa: 2.90,
+                help: true
+            }
+        ]
+    let std_year=[];
+    for(let i=0;i<student.length;i++){
+        if((student[i].year>=2&&student[i].help==true&&student[i].gpa>=2.75)|student[i].gpa>=3.20){
+            console.log(student[i].fullname+"ผ่าน")
+            std_year[student[i].year].push(1);
+        }else{
+            console.log(student[i].fullname+"ไม่ผ่าน")
+            std_year[student[i].year]+=student[i].fullname;
+        }
+    }
+    console.log(std_year)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

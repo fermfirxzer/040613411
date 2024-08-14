@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        function echo(){
-            console.log("1")
-        }
-        function change(name){
-            console.log(name)
-            document.getElementById(name).value.style.color="green";
-        }
-        window.onload=function(){
-            document.getElementById("name").onclick=change("name")
-            document.getElementById("age").onclick=change("age")
-            document.getElementById("date").onclick=change("date")
+        // function echo() {
+        //     console.log("1")
+        // }
+        // function change(name) {
+        //     console.log(name)
+        //     document.getElementById(name).value.style.color = "green";
+        // }
+        // window.onload=function(){
+        //     document.getElementById("name").onfocusout=echo
+        //     document.getElementById("age").onfocusout=change("age")
+        //     document.getElementById("date").onfocusout=change("date")
+        // }
+        window.onload = function () {
+            var form=document.getElementById("form");
+            form.addEventListener("focusout",(e)=>{
+                e.target.style.color="red";
+            })
         }
     </script>
 </head>
+
 <body>
-    <label>Name :</label>
-    <input type="text" placeholder="name" id="name"><br>
-    <label>Age :</label>
-    <input type="number" placeholder="age" id="number"><br>
-    <label>Birthdate :</label>
-    <input type="date" id="date"> 
+    <form id="form">
+        <label>Name :</label>
+        <input type="text" placeholder="name" id="name"><br>
+        <label>Age :</label>
+        <input type="number" placeholder="age" id="age"><br>
+        <label>Birthdate :</label>
+        <input type="date" id="date">
+    </form>
 </body>
+
 </html>
