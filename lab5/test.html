@@ -8,15 +8,15 @@
 
 <body>
     <script>
-        function openPopup() {
-            let winObj = window.open('', '', 'width=300,height=150');
-            winObj.document.write('<html><head><title>Popup</title></head><body><h1>Sample Text</h1></body></html>')
         
+        window.onload=function(){
+            let p=document.getElementById("ans");
+            p.innerHTML="ans";
         }
-
         
     </script>
     <input type="button" value="Open!!" onclick="openPopup()">
+    <p id="ans"></p>
 </body>
 
 </html>
