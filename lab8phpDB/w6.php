@@ -16,9 +16,21 @@ function confirmEdit(username){
 </script>
 </head>
 <body>
+<form action="workshop6.php" method="GET">
+            <input type="text" name="name" placeholder="ค้นหาด้วยชื่อ :"><br>
+            <input type="submit" value="ค้นหา">
+</form>
 <?php
-$stmt = $pdo->prepare("SELECT * FROM member");
-$stmt->execute();
+    $stmt=$pdo->prepare("SELECT * FROM member WHERE name LIKE ?");
+    if(!empty($_GET)&&isset($_GET["name"])){
+        $value='%'.$_GET["name"].'%';
+    }else if(empty($_GET)){
+        $value='%'.'%';
+    }
+    $stmt->bindParam(1,$value);
+    $stmt->execute();
+?>
+<?php
 while ($row = $stmt->fetch()) { ?>
     <div style="padding:10px">
         <h2><?=$row["username"]?></h2>

@@ -27,7 +27,7 @@
         <?php } ?>
         <?php if($index==1){
             echo "ไม่พบชื่อผู้ใช้งาน";
-            echo $index;
+        
         }
     }
     ?>

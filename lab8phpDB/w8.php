@@ -12,13 +12,13 @@
         $stmt->bindParam(5,$_POST["mobile"]);
         $stmt->bindParam(6,$_POST["email"]);
         if($stmt->execute()){
-            $insert=true;
+            header("location:workshop6.php");
         }else{
             $insert=false;
         }
     }?>
 <h3>เพิ่มข้อมูล User : </h3>
-<form action="workshop7.php" method="post">
+<form action="workshop8.php" method="post">
     username : <input type="text" name="username" require><br>
     password : <input type="text" name="password" require><br>
     name : <input type="text" name="name" require><br>
