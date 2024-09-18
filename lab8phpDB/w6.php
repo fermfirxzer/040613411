@@ -1,30 +1,34 @@
 <?php include "connect.php" ?>
 <html>
+<head><meta charset="utf-8">
+<script>
+function confirmDelete(username) { 
+    var ans = confirm("ต้องการลบ username :" + username); 
+    if (ans==true) // ถ้าผู้ใชกด ้ OK จะเข ้าเงื่อนไขนี้
+        document.location = "delete.php?username=" + username;
+    }
+function confirmEdit(username){
+    var ans = confirm("ต้องการแก้ไข username :" + username); 
+    if (ans==true) // ถ้าผู้ใชกด ้ OK จะเข ้าเงื่อนไขนี้
+        document.location = "workshop9.php?username=" + username;
+    }
 
-<head>
-    <meta charset="utf-8">
-    <script>
-        function confirmDelete(pid) { // ฟังก์ชนจะถูกเรียกถ้าผู้ใช ั คลิกที่ ้ link ลบ
-            var ans = confirm("ต ้องการลบสนค ้ารหัส ิ " + pid); // แสดงกล่องถามผู้ใช ้
-            if (ans == true) // ถ้าผู้ใชกด ้ OK จะเข ้าเงื่อนไขนี้
-                document.location = "delete.php?pid=" + pid; // สงรหัสส ่ นค ้าไปให ้ไฟล์ ิ delete.php
-        }
-    </script>
+</script>
 </head>
-
 <body>
-    <?php
-    $stmt = $pdo->prepare("SELECT * FROM member");
-    $stmt->execute();
-    while ($row = $stmt->fetch()) { ?>
-        ชื่อสมาชิก : <?=$row["name"] ?> <br>
-        ที่อยู่ : <?=$row["address"] ?> <br>
-        อีเมล์ : <?=$row["email"] ?> <br>
-        <img src='./photo/member/<?=$index?>.jpg' width="250px" height="200px"> <br>
-        <?php $index++ ?>
+<?php
+$stmt = $pdo->prepare("SELECT * FROM member");
+$stmt->execute();
+while ($row = $stmt->fetch()) { ?>
+    <div style="padding:10px">
+        <h2><?=$row["username"]?></h2>
+        email : <?=$row["email"]?> <br>
+        ที่อยู่ : <?=$row["address"]?><br>
+        <a href='#' onclick="confirmEdit('<?=$row["username"]?>')">แก้ไข</a>
+        <a href='#' onclick="confirmDelete('<?=$row["username"]?>')">ลบ</a>
         <hr>
-    <?php } ?>
-    
+    </div>
+<?php }
+?>
 </body>
-
 </html>
