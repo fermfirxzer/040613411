@@ -21,11 +21,13 @@
             ที่อยู่ : <?=$row["address"] ?> <br>
             อีเมล์ : <?=$row["email"] ?> <br>
             <img src='./photo/member/<?=$index?>.jpg' width="250px" height="200px"> <br>
+           
             <?php $index++ ?>
             <hr>
         <?php } ?>
-        <?php if($index=1){
+        <?php if($index==1){
             echo "ไม่พบชื่อผู้ใช้งาน";
+            echo $index;
         }
     }
     ?>
