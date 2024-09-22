@@ -17,14 +17,16 @@
     $stmt = $pdo->prepare("SELECT * FROM member");
     $stmt->execute();
     while ($row = $stmt->fetch()) { ?>
-        ชื่อสมาชิก : <?=$row["name"] ?> <br>
-        ที่อยู่ : <?=$row["address"] ?> <br>
-        อีเมล์ : <?=$row["email"] ?> <br>
-        <img src='./photo/member/<?=$index?>.jpg' width="250px" height="200px"> <br>
+        ชื่อสมาชิก : <?= $row["name"] ?> <br>
+        ที่อยู่ : <?= $row["address"] ?> <br>
+        อีเมล์ : <?= $row["email"] ?> <br>
+        <img src='./photo/member/<?= $index ?>.jpg' width="250px" height="200px"> <br>
+        <?= "<a href='editform.php?pid=" . $row ["pid"] . "'>แก ้ไข</a> | "; ?>
+        <?= "<a href='#' onclick='confirmDelete(" . $row ["pid"] . ")'>ลบ</a>"; ?>
         <?php $index++ ?>
         <hr>
     <?php } ?>
-    
+
 </body>
 
 </html>
