@@ -16,13 +16,13 @@ function confirmEdit(username){
 </script>
 </head>
 <body>
-<form action="workshop6.php" method="GET">
+<form action="Allproduct.php" method="GET">
             <input type="text" name="name" placeholder="ค้นหาด้วยชื่อ :"><br>
             <input type="submit" value="ค้นหา">
 </form>
 <?php
-    $stmt=$pdo->prepare("SELECT * FROM member WHERE name LIKE ?");
-    if(!empty($_GET)&&isset($_GET["name"])){
+    $stmt=$pdo->prepare("SELECT * FROM product WHERE pname LIKE ?");
+    if(!empty($_GET)&&isset($_GET["pname"])){
         $value='%'.$_GET["name"].'%';
     }else if(empty($_GET)){
         $value='%'.'%';
