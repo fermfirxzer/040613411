@@ -15,7 +15,7 @@
         ?>
         <div style="display: flex;">
             <div>
-                <img src="./photo/member/<?=$row["username"]?>.jpg" width="200">
+                <img src="./photo/member/<?=$row["img"]?>" width="200">
             </div>
             <div style="padding:15px">
                 <h2><?=$row["username"]?></h2>
