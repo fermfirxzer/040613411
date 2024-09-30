@@ -1,13 +1,24 @@
 <?php
 include "connect.php";
 session_start();
+$login=true;
+if(!empty($_POST)){
 $stmt = $pdo->prepare("SELECT * FROM member WHERE username = ? AND password = ?");
 $stmt->bindParam(1, $_POST["username"]);
 $stmt->bindParam(2, $_POST["password"]);
 $stmt->execute();
 $row = $stmt->fetch();
-// หาก username และ password ตรงกัน จะมีข้อมูลในตัวแปร $row
-
+$error=0;
+if($row){
+session_regenerate_id();
+$_SESSION["fullname"] = $row["name"];
+$_SESSION["username"] = $row["username"];
+$_SESSION["Admin"]=$row["isAdmin"];
+header("location:mainuser.php");
+}else{
+    $error=1;
+}
+}
 ?>
 <html>
 
@@ -20,27 +31,18 @@ $row = $stmt->fetch();
     <link href="mcss.css" rel="stylesheet" type="text/css" />
     <script src="mpage.js"></script>
 </head>
-
 <body>
     <?php include "./component/head.php" ?>
     <?php include "./component/mobile_bar.php" ?>
     <main>
         <article>
-            <form action="check-login.php" method="POST">
+            <form action="login.php" method="POST">
                 Username: <input type="text" name="username"><br>
                 Password: <input type="password" name="password"><br>
                 <input type="submit" value="Login">
-            </form>
-            <?php if (!empty($row)) {
-            session_regenerate_id();
-    
-            $_SESSION["fullname"] = $row["name"];
-            $_SESSION["username"] = $row["username"];
- 
-            echo "เข้าสูระบบส ่ าเร็จ<br>";
-            echo "<a href='user-home.php'>ไปยังหน้าหลักของผู้ใช<้ /a>";
-    
-        } else {
+        </form>
+        <?php
+         if($error) {
             echo "ไม่ส าเร็จ ชอหรือรหัสผ่านไม่ถูกต้อง ื่ ";
             echo "<a href='login-form.php'>เข้าสูระบบอีก ่ ครัง</a>"; 
         } ?>
