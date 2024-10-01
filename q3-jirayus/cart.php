@@ -57,7 +57,6 @@ if ($_GET["action"]=="add") {
 	}
 </script>
 </head>
-
 <body>
     <?php include "./component/head.php" ?>
     <?php include "./component/mobile_bar.php" ?>
@@ -88,7 +87,7 @@ if ($_GET["action"]=="add") {
 </table>
 </form>
 
-<a href="mainuser.php">< เลือกสินค้าต่อ</a>
+<a href="mpage.php">< เลือกสินค้าต่อ</a>
         </article>
         <?php include "./component/menu.php" ?>
         <?php include "./component/aside.php" ?>

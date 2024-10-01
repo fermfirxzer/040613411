@@ -14,7 +14,7 @@ session_regenerate_id();
 $_SESSION["fullname"] = $row["name"];
 $_SESSION["username"] = $row["username"];
 $_SESSION["Admin"]=$row["isAdmin"];
-header("location:mainuser.php");
+header("location:mpage.php");
 }else{
     $error=1;
 }

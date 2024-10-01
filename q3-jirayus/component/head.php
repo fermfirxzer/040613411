@@ -1,10 +1,5 @@
 <?php 
 // ตรวจสอบว่ามีชอใน ื่ session หรือไม่ หากไม่มีให้ไปหน้า login อัตโนมัติ
-$login = $login ?? false;
-// if (!$login&&empty($_SESSION["username"]) ) {
-// header("location:login.php");
-// exit();
-// }
 ?>
 <header>
         <div class="logo">
