@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        async function getDataFromAPI() {
+            let response = await fetch('http://202.44.40.193/~aws/JSON/priv_hos.json');
+            let rawData = await response.text() 
+            objectData = JSON.parse(rawData) 
+        
+            let hosData=objectData.features;
+            console.log(hosData) 
+            
+            let bighost=document.getElementById('bighost');
+            let normalhos=document.getElementById('normalhos');
+            let smallhos=document.getElementById('smallhos');
+            for (let i = 0; i < hosData.length; i++) {
+                let content = 'ชื่อ' + hosData[i].properties.name + ': ' 
+                content += hosData[i].properties.num_bed + ' จำนวนเตียง'
+                let li = document.createElement('li') // สร้างแทก็ <li>
+                li.innerHTML = content // นําข้อมูลทจี
+                if(hosData[i].properties.num_bed>90){
+                    bighost.appendChild(li);
+                }else if(hosData[i].properties.num_bed>30&&hosData[i].properties.num_bed<=90){
+                    normalhos.appendChild(li);
+                }else{
+                    smallhos.appendChild(li);
+                }
+                     // เพมแท ิ่ ก็ <li> ใหม่
+            }
+        }
+        getDataFromAPI() // เรียกฟังก์ชัน
+    </script>
+</head>
+
+<body>
+    <h1>โรงพยาบาล</h1>
+    <h3>โรงพยาบาลขนาดใหญ่</h3>
+    <ol start="1" id="bighost"></ol>
+    <h3>โรงพยาบาลขนาดกลาง</h3>
+    <ol start="1" id="normalhos"></ol>
+    <h3>โรงพยาบาลขนาดเล็ก</h3>
+    <ol start="1" id="smallhos"></ol>
+</body>
+
+</html>
