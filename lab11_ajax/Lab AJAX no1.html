@@ -1,36 +1,48 @@
+<!doctype html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <script>
-        var httpRequest;
-        function send() {
-            httpRequest = new XMLHttpRequest();
-            httpRequest.onreadystatechange = showResult;
-            var mango = document.getElementById("mango").value;
-            var orange = document.getElementById("orange").value;
-            var banana = document.getElementById("banana").value;
-            var url = "add.php?mango=" + mango + "&orange=" + orange +"&banana="+banana;
-           
-            httpRequest.open("GET", url);
-            httpRequest.send();
-        }
-        function showResult() {
-            console.log(1)
-            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                console.log(httpRequest.responseText)
-                document.getElementById("result").innerHTML = httpRequest.responseText;
-            }
-        }
-    </script>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<script>
+	var xmlHttp;
+
+	function checkUsername() {
+		document.getElementById("username").className = "thinking";
+		
+		xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = showUsernameStatus;
+		
+		var username = document.getElementById("username").value;
+		var url = "checkName.php?username=" + username;
+		xmlHttp.open("GET", url);
+		xmlHttp.send();
+		console.log("send")
+	}	
+
+	function showUsernameStatus() {
+		if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+			// console.log(xmlHttp.responseText);	
+			if (xmlHttp.responseText === "okay") {
+				document.getElementById("username").className = "approved";
+				console.log("1")
+			} else {
+				document.getElementById("username").className = "denied";
+				// document.getElementById("username").focus();	
+				// document.getElementById("username").select();
+			}
+		}
+	}
+</script>
 </head>
 
 <body>
-    <h3>บันทีกการขาย</h3>
-    มะม่วง กก. ละ 30 บาท ขายได้ = <input type="text" id="mango"><br>
-    ส้ม กก. ละ 70 บาท ขายได้ = <input type="text" id="orange"><br>
-    กล้วย กก. ละ 30 บาท ขายได้ = <input type="text" id="banana" onkeyup="send()"><br>
-    <h3 id="result">ยอดขาย</h3>
+	<form>
+		<h1>Please register:</h1>
+		Username:<input id="username" type="text" onblur="checkUsername()"><br>
+		First Name:<input type="text" name="firstname"><br> 
+		Last Name:<input type="text" name="lastname"><br> 
+		Email:<input type="text" name="email"><br> 
+		<input type="submit" value="Register">
+	</form>
 </body>
-
 </html>
