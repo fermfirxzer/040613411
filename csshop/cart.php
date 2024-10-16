@@ -1,5 +1,5 @@
 <?php
-
+include "connect.php";
 session_start();
 // เพิ่มสินค้า
 if ($_GET["action"]=="add") {
@@ -31,13 +31,14 @@ if ($_GET["action"]=="add") {
 	$qty = $_GET["qty"];
 	$_SESSION['cart'][$pid]['qty'] = $qty;
 
-// ลบสินค้า
 } else if ($_GET["action"]=="delete") {
 	
 	$pid = $_GET['pid'];
 	unset($_SESSION['cart'][$pid]);
+	
 }
 ?>
+
 <html>
 
 <head>
@@ -56,6 +57,11 @@ if ($_GET["action"]=="add") {
 		document.location = "cart.php?action=update&pid=" + pid + "&qty=" + qty; 
 	}
 </script>
+<style>
+	p{
+		margin:0;
+	}
+	</style>
 </head>
 <body>
     <?php include "./component/head.php" ?>
@@ -63,12 +69,11 @@ if ($_GET["action"]=="add") {
     <main>
         <article>
 	<form>
+	<p> <?php if(empty($_SESSION['cart'])){echo "ไม่มีสินค้าในตะกร้า";} ?></p> 
 	<table border="1">
 <?php 
-	echo "<br> </br>";
-	print_r($cart_item);
-	echo "<br> </br>";
-	print_r($_SESSION["cart"]);	
+	print_r($_SESSION['cart']);
+	
 	$sum = 0;
 	foreach ($_SESSION["cart"] as $item) {
 		$sum += $item["price"] * $item["qty"];
@@ -83,11 +88,65 @@ if ($_GET["action"]=="add") {
 		</td>
 	</tr>
 <?php } ?>
-<tr><td colspan="3" align="right">รวม <?=$sum?> บาท</td></tr>
-</table>
-</form>
+	<tr><td colspan="3" align="right">รวม <?=$sum?> บาท</td></tr>
+	</table>
+	</form>
+	
+		<?php 
+		$maxprice=0;
+		$sumprice=0;
+		if(!empty($_SESSION['cart'])){
+			foreach($_SESSION['cart']as $item){
+				
+				if($item['price']>$maxprice){
+					$maxprice=$item['price'];
+				}
+			}
+		} 
+		$promotion="";
+		if (!empty($_SESSION['cart']) && empty($_SESSION['username']) && $sum >= 500) {
+			$stmt=$pdo->prepare("SELECT * FROM product WHERE price<=500");
+			
+			$stmt->execute();
+			$pro=$stmt->fetchAll();
+			$promotion="คุณได้สามารถเลือกสินค้าที่มีมูลค่าน้อยกว่า 500 บาทได้";
+		} else if (!empty($_SESSION['cart']) && !empty($_SESSION['username'])) {
+			$stmt=$pdo->prepare("SELECT * FROM product WHERE price<=?");
+			$stmt->bindParam(1,$maxprice);
+			$stmt->execute();
+			$pro=$stmt->fetchAll();
+			$promotion="คุณได้สามารถเลือกสินค้าที่มีมูลค่าน้อยกว่า $maxprice บาทได้";
+		} else {
+			$promotion = "คุณไม่สามารถใช้ promotion ได้";
+		}
+		
+		?> <h5><?php echo $promotion?></h5>
+		
+		<form method="post" action="buyproduct.php">
+		<div style="display:flex;gap:10px">	
+		<?php foreach($pro as $product){ ?>
+			<div>
+				<img src="./photo/product/<?=$product['img']?>" style="width:100px;"></img>
+			<p>ชื่อสินค้า :<?=$product["pname"]?></p>
+			<p>ราคา : <?=$product["price"]?></p>
+			เลือก :<input type="radio" name="promotion" value="<?=$product['pid']?>" id="product-<?=$pro['pid']?>">
+			</div>
+		<?php } ?>
+		
+		</div>
+		<button type="submit" value="ซื้อสินค้า">ซื้อสินค้า</button>
+		</form>
+		
+		<!-- <select name="promotion">	
+			<?php foreach($pro as $pro){ ?>
+				<option value="<?= $pro["pname"]?>"><?= $pro["pname"] ?></option>
+			<?php } ?>
+		</select> -->
+		
+	<br>
+<a href="mpage.php"><เลือกสินค้าต่อ</a>
+			<br>
 
-<a href="mpage.php">< เลือกสินค้าต่อ</a>
         </article>
         <?php include "./component/menu.php" ?>
         <?php include "./component/aside.php" ?>

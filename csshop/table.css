@@ -1,0 +1,29 @@
+h3{
+    color:green;
+}
+table{
+    margin:0 auto;
+    border-collapse:collapse;
+    border:1px solid black;
+}
+td+td,th+th{
+    
+    border-left:1px solid gray;
+}
+th{
+    background:#AFEEEE;
+    color:#00009E;
+    border:1px solid gray;
+    padding:0.5rem;
+}
+td{
+    padding:0.5rem;
+    border:1px solid gray;
+    background:#EEEEEE;
+}
+article{
+    
+}
+.footer{
+    
+}

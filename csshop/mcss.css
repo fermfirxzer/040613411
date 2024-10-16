@@ -40,9 +40,10 @@
         text-align: center;
         padding: 20px 0;
         background: #408040;
+        
       }
       h1, h2 { color: #008000; margin: 1em 0; text-align: center; }
-      p { margin: 2em 15%; }
+    
       img { display: block; }
       ul.menu { padding: 0 1em; margin: 0; }
       ul.menu li {
@@ -78,5 +79,9 @@
       @media only screen and (min-width: 600px) {
         div.mobile_bar { display: none; }
       }
-   
-    
+      
+      
+  
+      
+     
+      
